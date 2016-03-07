@@ -21,7 +21,7 @@ protocol VendingMachineType {
 }
 
 protocol ItemType {
-  let price: Double { get }
+  var price: Double { get }
   var quantity: Double { get set }
 }
 
@@ -29,21 +29,21 @@ protocol ItemType {
 // Error Types
 
 enum InventoryError: ErrorType {
-  case invalidResource
-  case conversionError
-  case invalidKey
+  case InvalidResource
+  case ConversionError
+  case InvalidKey
 }
 
 // Helper Classes
 class PlistConverter {
   class func dictionaryFromFile(resource: String, ofType type: String) throws -> [String: AnyObject] {
     guard let path = NSBundle.mainBundle().pathForResource(resource, ofType: type) else {
-      throw InventoryError.invalidResource
+      throw InventoryError.InvalidResource
     }
     
     guard let dictionary = NSDictionary(contentsOfFile: path),
     let castDictionary = dictionary as? [String: AnyObject] else {
-      throw InventoryError.conversionError
+      throw InventoryError.ConversionError
     }
     
     return castDictionary
@@ -63,14 +63,14 @@ class InventoryUnarchiver {
           let item = VendingItem(price: price, quantity: quantity)
         
           guard let key = VendingSelection(rawValue: key) else {
-            throw InventoryError.invalidKey
+            throw InventoryError.InvalidKey
           }
         
         inventory.updateValue(item, forKey: key)
       }
-      
-      return inventory
     }
+    
+    return inventory
   }
 }
 
@@ -91,7 +91,7 @@ enum VendingSelection: String {
   case Gum
 }
 
-struct VendingItem {
+struct VendingItem : ItemType {
   let price: Double
   var quantity: Double
 }
