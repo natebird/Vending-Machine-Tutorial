@@ -48,7 +48,7 @@
                                                 <color key="tintColor" red="0.96862745100000003" green="0.80000000000000004" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Add $5"/>
                                                 <connections>
-                                                    <action selector="depositfunds:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q7h-hB-HLM"/>
+                                                    <action selector="depositfunds" destination="BYZ-38-t0r" eventType="touchUpInside" id="s08-d3-t5r"/>
                                                     <segue destination="sgX-o8-4Y2" kind="presentation" id="bJ2-gw-fJc"/>
                                                 </connections>
                                             </button>
@@ -188,10 +188,10 @@
             </objects>
             <point key="canvasLocation" x="1020" y="657"/>
         </scene>
-        <!--View Controller-->
+        <!--Deposit Controller-->
         <scene sceneID="LR2-T6-P0F">
             <objects>
-                <viewController id="sgX-o8-4Y2" sceneMemberID="viewController">
+                <viewController id="sgX-o8-4Y2" customClass="DepositController" customModule="VendingMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kgV-it-C08"/>
                         <viewControllerLayoutGuide type="bottom" id="8z0-2v-Uiz"/>
@@ -205,17 +205,19 @@
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="LYW-2U-eEw"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="ekU-U0-w7f"/>
+                                    <constraint firstAttribute="height" constant="56" id="bkf-Ez-eFo"/>
+                                    <constraint firstAttribute="height" constant="56" id="ekU-U0-w7f"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Purchase"/>
+                                <state key="normal" title="Dismiss"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="LYW-2U-eEw"/>
+                                        <exclude reference="ekU-U0-w7f"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="purchase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SEk-3Z-hdK"/>
+                                    <action selector="dismiss" destination="sgX-o8-4Y2" eventType="touchUpInside" id="aH7-dz-7Io"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funds Successfully Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VF-sp-vet">
@@ -243,6 +245,7 @@
                                 <exclude reference="Onj-BO-wZ8"/>
                                 <exclude reference="RQd-pg-UNj"/>
                                 <exclude reference="YCK-QS-iF7"/>
+                                <exclude reference="ob9-cS-R8d"/>
                                 <exclude reference="pBp-Iy-mP0"/>
                             </mask>
                         </variation>
